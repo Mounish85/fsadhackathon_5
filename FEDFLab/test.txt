@@ -1,0 +1,3 @@
+Enabled and executed the git commands
+a)revert  ->  Undo the commit earlier
+b)reset   -> Undo the staging of the file
