@@ -1,0 +1,49 @@
+/* Background */
+#root {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f2027, #2c5364);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Container spacing */
+.container {
+  padding: 30px;
+}
+
+/* Glass Card */
+.card {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 15px;
+  backdrop-filter: blur(12px);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Inputs */
+input {
+  background: rgba(255,255,255,0.15) !important;
+  border: none !important;
+  color: white !important;
+}
+
+input::placeholder {
+  color: #ccc;
+}
+
+/* Buttons */
+button {
+  border-radius: 10px !important;
+  font-weight: 500;
+}
+
+/* Hover effect */
+.card:hover {
+  transform: translateY(-5px);
+  transition: 0.3s;
+  box-shadow: 0px 10px 30px rgba(0,0,0,0.4);
+}
+
+/* Titles */
+h4, h5 {
+  color: #ffffff;
+}
