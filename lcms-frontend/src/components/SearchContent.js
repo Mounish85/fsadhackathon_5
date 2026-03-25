@@ -5,11 +5,17 @@ function SearchBar({ setData }) {
   const [query, setQuery] = useState("");
 
   const handleSearch = () => {
-    if (!query.trim()) return;
+    if (!query.trim()) {
+      alert("Enter something to search");
+      return;
+    }
+
+    console.log("Searching:", query);
 
     searchContent(query)
       .then(res => {
-        setData(res.data);
+        console.log("Result:", res.data);
+        setData([...res.data]); // ✅ important fix
       })
       .catch(err => {
         console.error("Search error:", err);
@@ -17,23 +23,18 @@ function SearchBar({ setData }) {
   };
 
   return (
-    <div
-      className="d-flex align-items-center mb-4"
-      style={{
-        gap: "10px",
-        width: "100%"
-      }}
-    >
-      {/* 🔍 Search Input */}
+    <div className="d-flex align-items-center mb-4" style={{ gap: "10px", width: "100%" }}>
+      
       <input
         className="form-control"
         placeholder="🔍 Search by title..."
         value={query}
         onChange={(e) => setQuery(e.target.value)}
+        onKeyDown={(e) => e.key === "Enter" && handleSearch()} // ✅ FIX
         style={{
-          backgroundColor: "#ffffff",         // white background
-          color: "#000000",                   // black text
-          border: "2px solid #00e6ff",        // neon border
+          backgroundColor: "#ffffff",
+          color: "#000000",
+          border: "2px solid #00e6ff",
           borderRadius: "30px",
           padding: "12px 20px",
           boxShadow: "0 0 10px rgba(0,230,255,0.5)",
@@ -42,7 +43,6 @@ function SearchBar({ setData }) {
         }}
       />
 
-      {/* 🔎 Search Button */}
       <button
         className="btn"
         onClick={handleSearch}
